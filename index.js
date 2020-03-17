@@ -73,8 +73,7 @@ const quartileQ3 = (data, type = 'inc') => {
   return quartileFactory(data, type, 0.75);
 };
 
-// const arr = [8, 4.5, 5.5];
-const arr = [5, 8, 7, 12, 15, 10, 60];
+const arr = [60, 35, 20];
 console.info('arr', arr);
 
 
@@ -116,12 +115,23 @@ console.info('iqr', iqr);
 
 // Variance = sum((each element - mean) ^ 2) / total of elements
 const varianceArr = arr.slice().map(ele => Math.pow((ele - mean), 2));
-const variance = arrayTotal(varianceArr) / arr.length;
-console.info('variance', variance.toFixed(4));
 
-// Standard Deviation = square root of variance
-const standardDeviation = Math.pow(variance, (1 / 2));
-console.info('standardDeviation', standardDeviation.toFixed(4));
+// populational variance is divided by the lenght of data
+const variancePopulation = arrayTotal(varianceArr) / arr.length;
+console.info('variance Population', variancePopulation.toFixed(4));
+
+// Populational Standard Deviation = square root of populational variance 
+const standardDeviationPopulation = Math.pow(variancePopulation, (1 / 2));
+console.info('standard Deviation Population', standardDeviationPopulation.toFixed(4));
+
+
+// sample variance is divided by the lenght of data - 1
+const varianceSample = arrayTotal(varianceArr) / (arr.length - 1);
+console.info('variance Sample', varianceSample.toFixed(4));
+
+// Populational Standard Deviation = square root of populational variance 
+const standardDeviationSample= Math.pow(varianceSample, (1 / 2));
+console.info('standard Deviation Sample', standardDeviationSample.toFixed(4));
 
 
 // Mode
