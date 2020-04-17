@@ -15,16 +15,21 @@ const euclideanDistance = (rates) => {
   const sumValues = distances.reduce((previousValue, curValue) => previousValue + curValue);
 
   const distReal = Math.sqrt(sumValues);
-  console.info('distReal', distReal.toFixed(2));
+  console.info('distReal', distReal.toFixed(4));
 
   // adapt the scale of the distance and make it uniform
   // 0 => totally different :: 1 => totally equal
   const distUniform = 1 / (1 + Math.sqrt(sumValues));
-  console.info('distUniform', distUniform.toFixed(2));
+  console.info('distUniform', distUniform.toFixed(4));
+
+  const Euler = Math.E;
+  const sigmoideDist = 1 / (1 + (Euler ** (-Math.sqrt(sumValues))));
+  console.info('sigmoideDist', sigmoideDist.toFixed(4));
 
   return {
     distReal,
     distUniform,
+    sigmoideDist,
   };
 }
 
@@ -40,5 +45,6 @@ const users = [
 
 console.info(users);
 euclideanDistance(users.map(u => u.rates));
-// dist 2.29
-// distStandard 0.30
+// dist 2.2913
+// distStandard 0.3038
+// sigmoideDist 0.9082

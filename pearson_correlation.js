@@ -25,13 +25,11 @@ const pearsonCorrelation = (datasetA, datasetB) => {
   const lenDatasets = Math.min(datasetA.length, datasetB.length);
   // console.info('lenDatasets', lenDatasets);
 
-
   const sumA = arrayTotal(datasetA);
   const sumB = arrayTotal(datasetB);
 
   // console.info('sumA', sumA);
   // console.info('sumB', sumB);
-
 
   const multiAB = [];
   for (let i = 0; i < lenDatasets; i ++) {
@@ -42,7 +40,6 @@ const pearsonCorrelation = (datasetA, datasetB) => {
   const sumMultiAB = arrayTotal(multiAB);
   // console.info('sumMultiAB', sumMultiAB);
 
-
   const sqrtsA = [];
   for (let i = 0; i < lenDatasets; i ++) {
     sqrtsA.push(datasetA[i] ** 2);
@@ -52,7 +49,6 @@ const pearsonCorrelation = (datasetA, datasetB) => {
   const sumSqrtsA = arrayTotal(sqrtsA);
   // console.info('sumSqrtsA', sumSqrtsA);
 
-
   const sqrtsB = [];
   for (let i = 0; i < lenDatasets; i ++) {
     sqrtsB.push(datasetB[i] ** 2);
@@ -61,7 +57,6 @@ const pearsonCorrelation = (datasetA, datasetB) => {
 
   const sumSqrtsB = arrayTotal(sqrtsB);
   // console.info('sumSqrtsB', sumSqrtsB);
-
 
   const result = (sumMultiAB - ((sumA * sumB) / lenDatasets)) / (
     Math.sqrt(
