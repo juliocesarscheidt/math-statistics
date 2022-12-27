@@ -147,3 +147,4 @@ arr.forEach((ele) => {
   uniques.push(ele);
 });
 console.info('mode', mode);
+console.info('uniques', uniques);
