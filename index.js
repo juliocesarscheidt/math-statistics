@@ -16,62 +16,6 @@ const arrayMedian = (arr) => {
 
 const arrayDifference = (arrA, arrB) => arrA.filter(x => !arrB.includes(x));
 
-// Quartil INC
-const quartileInc = (data, q) => {
-  let newData = arraySort([...data]);
-
-  let result = 0;
-  const pos = ((newData.length) - 1) * q;
-  const base = Math.floor(pos);
-  const rest = pos - base;
-
-  if (newData[base + 1] !== undefined && newData[base + 1] !== null) {
-    const diff = newData[base + 1] - newData[base];
-    result = newData[base] + rest * (diff);
-  } else {
-    result = newData[base];
-  }
-  return result;
-};
-
-// Quartil EXC
-const quartileExc = (data, q) => {
-  let newData = arraySort([...data]);
-  newData.unshift(0);
-
-  let result = 0;
-  const pos = ((newData.length)) * q;
-  const base = Math.floor(pos);
-  const rest = pos - base;
-
-  if (newData[base + 1] !== undefined && newData[base + 1] !== null) {
-    const diff = newData[base + 1] - newData[base];
-
-    result = newData[base] + rest * (diff);
-  } else {
-    result = newData[base];
-  }
-  return result;
-};
-
-const quartileFactory = (data, type, percent) => {
-  type = `${type.toString().toUpperCase().substring(0, 1)}${type.toString().toLowerCase().substring(1, 100)}`;
-  if (type !== 'Inc' && type !== 'Exc') {
-    return 0;
-  }
-  const funcQuartile = `quartile${type}`;
-  return eval(funcQuartile)(data, percent);
-}
-
-const quartileQ1 = (data, type = 'inc') => {
-  return quartileFactory(data, type, 0.25);
-};
-const quartileQ2 = (data, type = 'inc') => {
-  return quartileFactory(data, type, 0.5);
-};
-const quartileQ3 = (data, type = 'inc') => {
-  return quartileFactory(data, type, 0.75);
-};
 
 const arr = [60, 35, 20];
 console.info('arr', arr);
@@ -91,47 +35,7 @@ const min = Math.min(...arr);
 console.info('min', min);
 
 const mean = arr.length && arr.length > 0 ? total / arr.length : 0;
-console.info('mean', mean.toFixed(4));
-
-
-// Amplitude (Max - Min)
-const amplitude = max - min;
-console.info('amplitude', amplitude.toFixed(4));
-
-
-const lowerQuartile = quartileQ1(arr, 'exc');
-const halfQuartile = quartileQ2(arr, 'exc');
-const upperQuartile = quartileQ3(arr, 'exc');
-
-console.info('lowerQuartile', lowerQuartile);
-console.info('halfQuartile', halfQuartile);
-console.info('upperQuartile', upperQuartile);
-
-
-// IQR = interquartile range (Q3 - Q1)
-const iqr = upperQuartile - lowerQuartile;
-console.info('iqr', iqr);
-
-
-// Variance = sum((each element - mean) ^ 2) / total of elements
-const varianceArr = arr.slice().map(ele => Math.pow((ele - mean), 2));
-
-// populational variance is divided by the lenght of data
-const variancePopulation = arrayTotal(varianceArr) / arr.length;
-console.info('variance Population', variancePopulation.toFixed(4));
-
-// Populational Standard Deviation = square root of populational variance 
-const standardDeviationPopulation = Math.pow(variancePopulation, (1 / 2));
-console.info('standard Deviation Population', standardDeviationPopulation.toFixed(4));
-
-
-// sample variance is divided by the lenght of data - 1
-const varianceSample = arrayTotal(varianceArr) / (arr.length - 1);
-console.info('variance Sample', varianceSample.toFixed(4));
-
-// Populational Standard Deviation = square root of populational variance 
-const standardDeviationSample= Math.pow(varianceSample, (1 / 2));
-console.info('standard Deviation Sample', standardDeviationSample.toFixed(4));
+console.info('mean', mean.toFixed(2));
 
 
 // Mode
