@@ -1,15 +1,13 @@
 // Implements euclidean distance
 // Formula
-// De(x, y) = Sqrt( Sum( Power2( x - y ) ) )
+// De(x, y) = Sqrt( Sum( Power2( abs( x - y ) ) ) )
 
-const randomBetween = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-
-const euclideanDistance = (rates) => {
-  const lenRates = Math.min(rates[0].length, rates[1].length);
+const euclideanDistance = (a, b) => {
+  const lenValues = Math.min(a.length, b.length);
 
   const distances = [];
-  for (let i = 0; i < lenRates; i ++) {
-    distances.push(Math.pow(rates[0][i] - rates[1][i], 2));
+  for (let i = 0; i < lenValues; i ++) {
+    distances.push(Math.pow(Math.abs(a[i] - b[i]), 2));
   }
 
   const sumValues = distances.reduce((previousValue, curValue) => previousValue + curValue);
@@ -33,18 +31,10 @@ const euclideanDistance = (rates) => {
   };
 }
 
-const users = [
-  {
-    name: 'User 1',
-    rates: [3.0, 3.5, 1.5, 5.0, 3.0, 3.5],
-  }, {
-    name: 'User 2',
-    rates: [2.5, 3.5, 3.0, 3.5, 2.5, 3.0],
-  }
-];
+const a = [3.0, 3.5, 1.5, 5.0, 3.0, 3.5]
+const b = [2.5, 3.5, 3.0, 3.5, 2.5, 3.0]
 
-console.info(users);
-euclideanDistance(users.map(u => u.rates));
-// dist 2.2913
-// distStandard 0.3038
+euclideanDistance(a, b);
+// distReal 2.2913
+// distUniform 0.3038
 // sigmoideDist 0.9082
