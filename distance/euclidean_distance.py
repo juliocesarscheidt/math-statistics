@@ -1,3 +1,4 @@
+# L2-regularization - L2 norm
 from scipy.spatial import distance
 from math import sqrt, pow
 

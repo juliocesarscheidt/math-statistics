@@ -1,3 +1,4 @@
+# L1-regularization - L1 norm
 from scipy.spatial import distance
 
 a = [3.0, 3.5, 1.5, 5.0, 3.0, 3.5]

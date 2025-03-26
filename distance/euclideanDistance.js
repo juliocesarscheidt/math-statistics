@@ -1,6 +1,7 @@
 // Implements euclidean distance
 // Formula
 // De(x, y) = Sqrt( Sum( Power2( abs( x - y ) ) ) )
+// L2-regularization - L2 norm
 
 const euclideanDistance = (a, b) => {
   const lenValues = Math.min(a.length, b.length);

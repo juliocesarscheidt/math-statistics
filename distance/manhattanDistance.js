@@ -1,6 +1,7 @@
 // Implements manhattan distance
 // Formula
 // De(x, y) = Sum( abs( x - y ) )
+// L1-regularization - L1 norm
 
 const manhattanDistance = (a, b) => {
   const lenValues = Math.min(a.length, b.length);
